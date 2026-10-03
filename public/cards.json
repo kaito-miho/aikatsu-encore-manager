@@ -1,0 +1,427 @@
+[
+  {
+    "cardNumber": "E1-01_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-01_PR.webp"
+  },
+  {
+    "cardNumber": "E1-02_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-02_PR.webp"
+  },
+  {
+    "cardNumber": "E1-03_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-03_PR.webp"
+  },
+  {
+    "cardNumber": "E1-04_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-04_PR.webp"
+  },
+  {
+    "cardNumber": "E1-05_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-05_R.webp"
+  },
+  {
+    "cardNumber": "E1-06_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-06_R.webp"
+  },
+  {
+    "cardNumber": "E1-07_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-07_R.webp"
+  },
+  {
+    "cardNumber": "E1-08_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-08_R.webp"
+  },
+  {
+    "cardNumber": "E1-09_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-09_R.webp"
+  },
+  {
+    "cardNumber": "E1-10_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-10_R.webp"
+  },
+  {
+    "cardNumber": "E1-11_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-11_R.webp"
+  },
+  {
+    "cardNumber": "E1-12_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-12_R.webp"
+  },
+  {
+    "cardNumber": "E1-13_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-13_R.webp"
+  },
+  {
+    "cardNumber": "E1-14_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-14_R.webp"
+  },
+  {
+    "cardNumber": "E1-15_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-15_R.webp"
+  },
+  {
+    "cardNumber": "E1-16_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-16_R.webp"
+  },
+  {
+    "cardNumber": "E1-17_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-17_R.webp"
+  },
+  {
+    "cardNumber": "E1-18_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-18_R.webp"
+  },
+  {
+    "cardNumber": "E1-19_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-19_R.webp"
+  },
+  {
+    "cardNumber": "E1-20_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-20_R.webp"
+  },
+  {
+    "cardNumber": "E1-21_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-21_N.webp"
+  },
+  {
+    "cardNumber": "E1-22_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-22_N.webp"
+  },
+  {
+    "cardNumber": "E1-23_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-23_N.webp"
+  },
+  {
+    "cardNumber": "E1-24_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-24_N.webp"
+  },
+  {
+    "cardNumber": "E1-25_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-25_N.webp"
+  },
+  {
+    "cardNumber": "E1-26_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-26_N.webp"
+  },
+  {
+    "cardNumber": "E1-27_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-27_N.webp"
+  },
+  {
+    "cardNumber": "E1-28_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-28_N.webp"
+  },
+  {
+    "cardNumber": "E1-29_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-29_N.webp"
+  },
+  {
+    "cardNumber": "E1-30_ER",
+    "rarity": "ER",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-30_ER.webp"
+  },
+  {
+    "cardNumber": "E1-31_ER",
+    "rarity": "ER",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-31_ER.webp"
+  },
+  {
+    "cardNumber": "E1-32_ER",
+    "rarity": "ER",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-32_ER.webp"
+  },
+  {
+    "cardNumber": "E1-33_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-33_PR.webp"
+  },
+  {
+    "cardNumber": "E1-34_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-34_PR.webp"
+  },
+  {
+    "cardNumber": "E1-35_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-35_PR.webp"
+  },
+  {
+    "cardNumber": "E1-36_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-36_PR.webp"
+  },
+  {
+    "cardNumber": "E1-37_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-37_R.webp"
+  },
+  {
+    "cardNumber": "E1-38_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-38_R.webp"
+  },
+  {
+    "cardNumber": "E1-39_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-39_R.webp"
+  },
+  {
+    "cardNumber": "E1-40_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-40_R.webp"
+  },
+  {
+    "cardNumber": "E1-41_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-41_N.webp"
+  },
+  {
+    "cardNumber": "E1-42_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-42_N.webp"
+  },
+  {
+    "cardNumber": "E1-43_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-43_N.webp"
+  },
+  {
+    "cardNumber": "E1-44_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-44_N.webp"
+  },
+  {
+    "cardNumber": "E1-45_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-45_N.webp"
+  },
+  {
+    "cardNumber": "E1-46_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-46_N.webp"
+  },
+  {
+    "cardNumber": "E1-47_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-47_N.webp"
+  },
+  {
+    "cardNumber": "E1-48_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-48_N.webp"
+  },
+  {
+    "cardNumber": "E1-49_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-49_N.webp"
+  },
+  {
+    "cardNumber": "E1-50_ER",
+    "rarity": "ER",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-50_ER.webp"
+  },
+  {
+    "cardNumber": "E1-51_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-51_PR.webp"
+  },
+  {
+    "cardNumber": "E1-52_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-52_PR.webp"
+  },
+  {
+    "cardNumber": "E1-53_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-53_R.webp"
+  },
+  {
+    "cardNumber": "E1-54_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-54_R.webp"
+  },
+  {
+    "cardNumber": "E1-55_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-55_R.webp"
+  },
+  {
+    "cardNumber": "E1-56_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-56_R.webp"
+  },
+  {
+    "cardNumber": "E1-57_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-57_R.webp"
+  },
+  {
+    "cardNumber": "E1-58_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-58_R.webp"
+  },
+  {
+    "cardNumber": "E1-59_R",
+    "rarity": "R",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-59_R.webp"
+  },
+  {
+    "cardNumber": "E1-60_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-60_N.webp"
+  },
+  {
+    "cardNumber": "E1-61_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-61_N.webp"
+  },
+  {
+    "cardNumber": "E1-62_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-62_N.webp"
+  },
+  {
+    "cardNumber": "E1-63_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-63_N.webp"
+  },
+  {
+    "cardNumber": "E1-64_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-64_N.webp"
+  },
+  {
+    "cardNumber": "E1-65_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-65_N.webp"
+  },
+  {
+    "cardNumber": "E1-66_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-66_N.webp"
+  },
+  {
+    "cardNumber": "E1-67_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-67_N.webp"
+  },
+  {
+    "cardNumber": "E1-68_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-68_N.webp"
+  },
+  {
+    "cardNumber": "E1-69_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-69_N.webp"
+  },
+  {
+    "cardNumber": "E1-70_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-70_N.webp"
+  },
+  {
+    "cardNumber": "E1-71_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-71_PR.webp"
+  },
+  {
+    "cardNumber": "E1-72_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-72_PR.webp"
+  },
+  {
+    "cardNumber": "E1-73_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-73_PR.webp"
+  },
+  {
+    "cardNumber": "E1-74_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-74_PR.webp"
+  },
+  {
+    "cardNumber": "E1-75_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-75_PR.webp"
+  },
+  {
+    "cardNumber": "E1-76_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-76_PR.webp"
+  },
+  {
+    "cardNumber": "E1-77_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-77_PR.webp"
+  },
+  {
+    "cardNumber": "E1-78_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-78_PR.webp"
+  },
+  {
+    "cardNumber": "E1-79_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-79_PR.webp"
+  },
+  {
+    "cardNumber": "E1-80_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-80_PR.webp"
+  },
+  {
+    "cardNumber": "E1-81_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-81_PR.webp"
+  },
+  {
+    "cardNumber": "E1-82_PR",
+    "rarity": "PR",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-82_PR.webp"
+  },
+  {
+    "cardNumber": "E1-83_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-83_N.webp"
+  },
+  {
+    "cardNumber": "E1-84_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-84_N.webp"
+  },
+  {
+    "cardNumber": "E1-85_N",
+    "rarity": "N",
+    "imageUrl": "https://dcd.aikatsu.com/encore/images/cardlist/card/E1-85_N.webp"
+  }
+]
