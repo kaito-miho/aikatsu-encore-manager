@@ -2,7 +2,7 @@ import "./App.css";
 import { coords } from "./data/coords";
 import { useEffect, useState } from "react";
 
-const officialCards = "/cards.json";
+const officialCards = `${import.meta.env.BASE_URL}cards.json`;
 
 const COORD_TYPES = [
   "キュート",
