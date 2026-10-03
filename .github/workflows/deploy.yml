@@ -1,3 +1,4 @@
+  GNU nano 9.2                        .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
 
 on:
@@ -21,22 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+^G Help       ^O Write Out  ^F Where Is   ^K Cut        ^T Execute    ^C Location   M-U Undo
+^X Exit       ^R Read File  ^\ Replace    ^U Paste      ^J Justify    ^/ Go To Line M-E Redo
 
-      - name: Build
-        run: npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-      - name: Deploy
-        uses: actions/deploy-pages@v4
