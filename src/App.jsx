@@ -2055,6 +2055,101 @@ const rarityList = [
               )}
             </>
           )}
+        
+                {/* =====================================================
+            譲るカード一覧
+        ===================================================== */}
+
+        {showGiveAwayList &&
+          !showCardForm &&
+          !showCardList && (
+            <>
+              <button
+                className="back-button"
+                onClick={() =>
+                  setShowGiveAwayList(false)
+                }
+              >
+                ← 戻る
+              </button>
+
+              <h2 className="section-title">
+                譲るカード一覧
+              </h2>
+
+              {cards.filter(
+                (card) =>
+                  (card.giveAwayQuantity || 0) > 0
+              ).length === 0 ? (
+                <p className="no-results">
+                  譲るカードがありません。
+                </p>
+              ) : (
+                <div className="give-away-list">
+                  <div className="give-away-table-header">
+                    <span>カード番号</span>
+                    <span>カード名</span>
+                    <span>譲る枚数</span>
+                  </div>
+
+                  {cards
+                    .filter(
+                      (card) =>
+                        (card.giveAwayQuantity || 0) > 0
+                    )
+                    .map((card) => (
+                      <div
+                        className="give-away-row"
+                        key={card.id}
+                      >
+                        <span className="give-away-card-number">
+                          {card.cardNumber}
+                        </span>
+
+                        <span className="give-away-card-name">
+                          {card.name}
+                        </span>
+
+                        <div className="give-away-quantity-control">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              changeGiveAwayQuantity(
+                                card.id,
+                                -1
+                              )
+                            }
+                          >
+                            −
+                          </button>
+
+                          <span>
+                            {card.giveAwayQuantity || 0}枚
+                          </span>
+
+                          <button
+                            type="button"
+                            onClick={() =>
+                              changeGiveAwayQuantity(
+                                card.id,
+                                1
+                              )
+                            }
+                            disabled={
+                              (card.giveAwayQuantity || 0) >=
+                              getCardQuantity(card)
+                            }
+                          >
+                            ＋
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              )}
+            </>
+          )}
+
 
         {/* =====================================================
             メイン画面
@@ -2062,7 +2157,8 @@ const rarityList = [
 
         {!selectedCoord &&
           !showCardForm &&
-          !showCardList && (
+          !showCardList && 
+          !showGiveAwayList && (
             <>
               <div className="top-buttons">
                 <button

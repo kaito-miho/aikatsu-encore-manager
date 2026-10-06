@@ -1586,3 +1586,58 @@ main {
     grid-row: 1 / 3;
   }
 }
+
+/* =========================
+   保有・譲るの見た目を区別
+========================= */
+
+/* ラベルは枚数表示のような丸いボックスにしない */
+.quantity-control .quantity-label {
+  min-width: 36px;
+  width: 36px;
+  height: auto;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #777;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 保有：今までのピンク系 */
+.quantity-control:not(.give-away-control) .quantity-label {
+  color: #e58caf;
+}
+
+/* 譲る：オレンジ系 */
+.quantity-control.give-away-control .quantity-label {
+  color: #d97706;
+}
+
+/* 譲るの＋−をオレンジに */
+.quantity-control.give-away-control button {
+  color: #d97706;
+  border-color: #d97706;
+}
+
+.quantity-control.give-away-control button:hover:not(:disabled) {
+  background: #fff7ed;
+}
+
+/* 譲るの枚数表示 */
+.quantity-control.give-away-control > span:not(.quantity-label) {
+  background: #fffaf5;
+  border-color: #f0d4b5;
+  color: #b45309;
+}
+
+/* 保有の枚数表示 */
+.quantity-control:not(.give-away-control) > span:not(.quantity-label) {
+  background: linear-gradient(135deg, #fff7fb, #f5f9ff);
+  border-color: #f3d1df;
+  color: #777;
+}
