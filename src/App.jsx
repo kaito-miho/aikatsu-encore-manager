@@ -41,6 +41,9 @@ function App() {
 
   const [showCardList, setShowCardList] =
     useState(false);
+
+  const [showGiveAwayList, setShowGiveAwayList] =
+    useState(false);
   
   const [selectedImage, setSelectedImage] =
     useState(null);
@@ -2081,6 +2084,14 @@ const rarityList = [
                 >
                   カード一覧
                 </button>
+                                <button
+                  className="card-list-button"
+                  onClick={() =>
+                    setShowGiveAwayList(true)
+                  }
+                >
+                  譲るカード一覧
+                </button>
               </div>
 
               <h2 className="section-title">
@@ -2497,7 +2508,8 @@ const rarityList = [
 
         {selectedCoord &&
           !showCardForm &&
-          !showCardList && (
+          !showCardList && 
+          !showGiveAwayList && (
             <>
               <button
                 className="back-button"

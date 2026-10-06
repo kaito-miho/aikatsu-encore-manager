@@ -1457,3 +1457,132 @@ main {
     word-break: break-word;
   }
 }
+
+/* =========================
+   譲るカード一覧
+========================= */
+
+.give-away-list {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.give-away-table-header,
+.give-away-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 180px;
+  align-items: center;
+  gap: 16px;
+}
+
+.give-away-table-header {
+  padding: 10px 16px;
+  border-bottom: 2px solid #f3d1df;
+  color: #777;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.give-away-row {
+  min-height: 64px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #f1e4ea;
+  background: #fff;
+}
+
+.give-away-card-number {
+  font-size: 13px;
+  color: #888;
+}
+
+.give-away-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+.give-away-quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.give-away-quantity-control button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #d97706;
+  border-radius: 50%;
+  background: #fff;
+  color: #d97706;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.give-away-quantity-control button:hover:not(:disabled) {
+  background: #fff7ed;
+}
+
+.give-away-quantity-control button:disabled {
+  color: #d6d3d1;
+  border-color: #d6d3d1;
+  cursor: default;
+}
+
+.give-away-quantity-control span {
+  min-width: 52px;
+  height: 30px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #fffaf5;
+  border: 1px solid #f0d4b5;
+  color: #b45309;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* スマホ */
+@media (max-width: 600px) {
+  .give-away-list {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .give-away-table-header {
+    display: none;
+  }
+
+  .give-away-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #f1e4ea;
+    border-radius: 12px;
+  }
+
+  .give-away-card-number {
+    grid-column: 1;
+    font-size: 12px;
+  }
+
+  .give-away-card-name {
+    grid-column: 1;
+    font-size: 14px;
+  }
+
+  .give-away-quantity-control {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+}
