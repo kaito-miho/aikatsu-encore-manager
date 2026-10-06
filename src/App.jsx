@@ -1,5 +1,6 @@
 import "./App.css";
 import { coords } from "./data/coords";
+import { cardMaster, officialCoords } from "./data/cardMaster.generated";
 import { useEffect, useState } from "react";
 
 const officialCards = `${import.meta.env.BASE_URL}cards.json`;
