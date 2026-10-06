@@ -916,9 +916,8 @@ function App() {
       getCardsForCoord(coord);
 
     return coordCards.reduce(
-      (total, card) =>
-        total +
-        getCardQuantity(card),
+      (total,card) =>
+        total + getCardQuantity(card),
       0
     );
   };
@@ -2372,12 +2371,7 @@ const rarityList = [
               </h2>
 
               <div className="item-grid">
-                {cards
-                  .filter(
-                    (card) =>
-                      card.coordId ===
-                      selectedCoord.id
-                  )
+                {getCardsForCoord(selectedCoord)
                   .map((card) => {
                     const quantity =
                       getCardQuantity(
