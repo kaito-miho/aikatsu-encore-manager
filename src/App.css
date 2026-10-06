@@ -1299,3 +1299,28 @@ main {
     max-width: 70px;
   }
 }
+
+/* 保有・譲るの枚数表示 */
+.quantity-label {
+  font-weight: 600;
+  min-width: 32px;
+}
+
+/* 譲る操作だけ色を変える */
+.give-away-control {
+  color: #d97706;
+}
+
+.give-away-control button {
+  color: #d97706;
+  border-color: #d97706;
+}
+
+.give-away-control button:hover:not(:disabled) {
+  background: #fff7ed;
+}
+
+.give-away-control button:disabled {
+  color: #d6d3d1;
+  border-color: #d6d3d1;
+}

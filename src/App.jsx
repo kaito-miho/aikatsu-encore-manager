@@ -1899,39 +1899,86 @@ const rarityList = [
 
                             {/* 保有枚数 */}
 
-                            <div className="quantity-control">
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  changeCardQuantity(
-                                    card.id,
-                                    -1
-                                  )
-                                }
-                                disabled={
-                                  quantity <=
-                                  0
-                                }
-                              >
-                                −
-                              </button>
+                            {/* 保有枚数 */}
 
-                              <span>
-                                {quantity}枚
-                              </span>
+<div className="quantity-control">
+  <span className="quantity-label">
+    保有
+  </span>
 
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  changeCardQuantity(
-                                    card.id,
-                                    1
-                                  )
-                                }
-                              >
-                                ＋
-                              </button>
-                                                        </div>
+  <button
+    type="button"
+    onClick={() =>
+      changeCardQuantity(
+        card.id,
+        -1
+      )
+    }
+    disabled={quantity <= 0}
+  >
+    −
+  </button>
+
+  <span>
+    {quantity}枚
+  </span>
+
+  <button
+    type="button"
+    onClick={() =>
+      changeCardQuantity(
+        card.id,
+        1
+      )
+    }
+  >
+    ＋
+  </button>
+</div>
+
+{/* 譲る枚数 */}
+
+<div className="quantity-control give-away-control">
+  <span className="quantity-label">
+    譲る
+  </span>
+
+  <button
+    type="button"
+    onClick={() =>
+      changeGiveAwayQuantity(
+        card.id,
+        -1
+      )
+    }
+    disabled={
+      !card.giveAwayQuantity ||
+      card.giveAwayQuantity <= 0
+    }
+  >
+    −
+  </button>
+
+  <span>
+    {card.giveAwayQuantity || 0}枚
+  </span>
+
+  <button
+    type="button"
+    onClick={() =>
+      changeGiveAwayQuantity(
+        card.id,
+        1
+      )
+    }
+    disabled={
+      (card.giveAwayQuantity || 0) >=
+      quantity
+    }
+  >
+    ＋
+  </button>
+</div>
 
                             {/* 譲る枚数 */}
 
