@@ -113,12 +113,31 @@ function App() {
     // Excelマスタを唯一のカード一覧として使用
     // 手動登録されていたカードはここには入らない
     return cardMaster.map((masterCard) => ({
-      ...masterCard,
-      quantity:
-        quantityMap.get(
-          masterCard.cardNumber
-        ) ?? 0,
-    }));
+  ...masterCard,
+  quantity:
+    quantityMap.get(
+      masterCard.cardNumber
+    ) ?? 0,
+  giveAwayQuantity:
+    (() => {
+      const savedCard =
+        savedCards.find(
+          (card) =>
+            card.cardNumber ===
+            masterCard.cardNumber
+        );
+
+      return typeof savedCard?.giveAwayQuantity ===
+        "number"
+        ? Math.min(
+            savedCard.giveAwayQuantity,
+            quantityMap.get(
+              masterCard.cardNumber
+            ) ?? 0
+          )
+        : 0;
+    })(),
+   }));
   });
 
   // =========================
@@ -315,6 +334,48 @@ function App() {
       })
     );
   };
+
+  // =========================
+// 譲る枚数変更
+// =========================
+
+const changeGiveAwayQuantity = (
+  cardId,
+  amount
+) => {
+  setCards((prev) =>
+    prev.map((card) => {
+      if (card.id !== cardId) {
+        return card;
+      }
+
+      const currentGiveAway =
+        typeof card.giveAwayQuantity ===
+        "number"
+          ? card.giveAwayQuantity
+          : 0;
+
+      const maxQuantity =
+        getCardQuantity(card);
+
+      const newGiveAwayQuantity =
+        Math.max(
+          0,
+          Math.min(
+            maxQuantity,
+            currentGiveAway + amount
+          )
+        );
+
+      return {
+        ...card,
+        giveAwayQuantity:
+          newGiveAwayQuantity,
+      };
+    })
+  );
+};
+
 
   // =========================
   // 直接枚数指定
@@ -1866,6 +1927,48 @@ const rarityList = [
                                     card.id,
                                     1
                                   )
+                                }
+                              >
+                                ＋
+                              </button>
+                                                        </div>
+
+                            {/* 譲る枚数 */}
+
+                            <div className="quantity-control">
+                              <span>譲る</span>
+
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  changeGiveAwayQuantity(
+                                    card.id,
+                                    -1
+                                  )
+                                }
+                                disabled={
+                                  !card.giveAwayQuantity ||
+                                  card.giveAwayQuantity <= 0
+                                }
+                              >
+                                −
+                              </button>
+
+                              <span>
+                                {card.giveAwayQuantity || 0}枚
+                              </span>
+
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  changeGiveAwayQuantity(
+                                    card.id,
+                                    1
+                                  )
+                                }
+                                disabled={
+                                  (card.giveAwayQuantity || 0) >=
+                                  quantity
                                 }
                               >
                                 ＋
