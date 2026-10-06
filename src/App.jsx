@@ -45,11 +45,11 @@ function App() {
   const [selectedImage, setSelectedImage] =
     useState(null);
 
-  // =========================
+    // =========================
   // コーデ
   // =========================
 
-    const [coordList, setCoordList] = useState(() => {
+  const [coordList, setCoordList] = useState(() => {
     const saved = localStorage.getItem(
       "aikatsu-coords"
     );
@@ -67,17 +67,38 @@ function App() {
       }
     }
 
-    const existingIds = new Set(
-      savedCoords.map((coord) => coord.id)
+    // =========================
+    // 公式コーデだけを残す
+    // 手動登録したコーデは今回のマスタ統合では無視
+    // =========================
+
+    const officialIds = new Set(
+      officialCoords.map(
+        (coord) => coord.id
+      )
     );
 
+    const savedOfficialCoords =
+      savedCoords.filter((coord) =>
+        officialIds.has(coord.id)
+      );
+
+    const savedOfficialIds = new Set(
+      savedOfficialCoords.map(
+        (coord) => coord.id
+      )
+    );
+
+    // Excelから生成された公式コーデのうち、
+    // localStorageにまだ存在しないものを追加
     const newOfficialCoords =
       officialCoords.filter(
-        (coord) => !existingIds.has(coord.id)
+        (coord) =>
+          !savedOfficialIds.has(coord.id)
       );
 
     return [
-      ...savedCoords,
+      ...savedOfficialCoords,
       ...newOfficialCoords,
     ].map((coord) => ({
       ...coord,
@@ -109,37 +130,43 @@ function App() {
       "aikatsu-cards"
     );
 
-    if (!saved) {
-      return [];
+    let savedCards = [];
+
+    if (saved) {
+      try {
+        savedCards = JSON.parse(saved);
+      } catch (error) {
+        console.error(
+          "カードデータの読み込みに失敗しました",
+          error
+        );
+      }
     }
 
-    try {
-      const parsed = JSON.parse(saved);
+    // Excelマスタに存在するカード番号だけ、
+    // 過去の「所持枚数」を引き継ぐ
+    const quantityMap = new Map(
+      savedCards
+        .filter(
+          (card) =>
+            card.cardNumber &&
+            typeof card.quantity === "number"
+        )
+        .map((card) => [
+          card.cardNumber,
+          card.quantity,
+        ])
+    );
 
-      return parsed.map((card) => ({
-        ...card,
-
-        // 以前の「type」をそのまま利用
-        itemType:
-          card.itemType ||
-          card.type ||
-          "トップス",
-
-        // 以前のカードに保有枚数がなければ
-        // 所持状態から1枚として扱う
-        quantity:
-          typeof card.quantity === "number"
-            ? card.quantity
-            : 0,
-      }));
-    } catch (error) {
-      console.error(
-        "カードデータの読み込みに失敗しました",
-        error
-      );
-
-      return [];
-    }
+    // Excelマスタを唯一のカード一覧として使用
+    // 手動登録されていたカードはここには入らない
+    return cardMaster.map((masterCard) => ({
+      ...masterCard,
+      quantity:
+        quantityMap.get(
+          masterCard.cardNumber
+        ) ?? 0,
+    }));
   });
 
   // =========================
@@ -1209,173 +1236,191 @@ function App() {
     );
   };
 
-  // =========================
-  // シリーズ一覧
-  // =========================
-
-  const seriesList = [
-    ...new Set(
-      coordList
-        .map(
-          (coord) =>
-            coord.series
-        )
-        .filter(
-          (series) =>
-            series !== ""
-        )
-    ),
-  ].sort(
-    (a, b) =>
-      Number(a) -
-      Number(b)
-  );
 
   // =========================
-  // ブランド一覧
+  // Excelマスタ基準のフィルター一覧
   // =========================
 
-  const brandList = [
+  // =========================
+// Excelマスタ基準のフィルター一覧
+// =========================
 
+// タイプ
+const coordTypeList = [
   ...new Set(
-
-    cards
-
+    cardMaster
       .map((card) =>
-
-        card.brand
-
-          ?.trim()
-
+        card.coordType?.trim()
       )
-
       .filter(Boolean)
-
   ),
-
 ].sort((a, b) =>
-
-  a.localeCompare(
-
-    b,
-
-    "ja"
-
-  )
-
+  a.localeCompare(b, "ja")
 );
 
-// レアリティ一覧
+// シリーズ
+const seriesList = [
+  ...new Set(
+    cardMaster
+      .map((card) =>
+        String(
+          card.series || ""
+        ).trim()
+      )
+      .filter(Boolean)
+  ),
+].sort((a, b) => {
+  const na = Number(
+    a.replace(/^E/, "")
+  );
+
+  const nb = Number(
+    b.replace(/^E/, "")
+  );
+
+  return na - nb;
+});
+
+// ブランド
+const brandList = [
+  ...new Set(
+    cardMaster
+      .map((card) =>
+        card.brand?.trim()
+      )
+      .filter(Boolean)
+  ),
+].sort((a, b) =>
+  a.localeCompare(b, "ja")
+);
+
+// ブランド未設定
+if (
+  cardMaster.some(
+    (card) =>
+      !card.brand?.trim()
+  )
+) {
+  brandList.push("なし");
+}
+
+// レアリティ
+const rarityOrder = [
+  "ER",
+  "PR",
+  "R",
+  "N",
+];
+
 const rarityList = [
   ...new Set(
-    cards
+    cardMaster
       .map((card) =>
         card.rarity?.trim()
       )
       .filter(Boolean)
   ),
 ].sort((a, b) => {
-  const order = [
-    "ER",
-    "PR",
-    "R",
-    "N",
-  ];
+  const ai =
+    rarityOrder.indexOf(a);
 
-  return (
-    order.indexOf(a) -
-    order.indexOf(b)
-  );
+  const bi =
+    rarityOrder.indexOf(b);
+
+  if (ai === -1 && bi === -1) {
+    return a.localeCompare(
+      b,
+      "ja"
+    );
+  }
+
+  if (ai === -1) {
+    return 1;
+  }
+
+  if (bi === -1) {
+    return -1;
+  }
+
+  return ai - bi;
 });
 
-// ブランド未設定用
-brandList.push("なし");
-
   // =========================
-  // フィルター
+  // コーデ一覧フィルター
   // =========================
 
   const filteredCoords =
-    coordList.filter(
-      (coord) => {
-        const typeMatch =
-          filterType ===
-            "すべて" ||
-          coord.coordType ===
-            filterType;
+    coordList.filter((coord) => {
+      // このコーデに属するExcelマスタカード
+      const coordCards =
+        cardMaster.filter(
+          (card) =>
+            card.coordName ===
+            coord.name
+        );
 
-        const seriesMatch =
-          filterSeries ===
-            "すべて" ||
-          String(
-            coord.series
-          ) ===
-            String(
-              filterSeries
-            );
+      // -------------------------
+      // タイプ
+      // -------------------------
 
-        const brandMatch =
+      const typeMatch =
+        filterType === "すべて" ||
+        coordCards.some(
+          (card) =>
+            card.coordType ===
+            filterType
+        ) 
 
-  filterBrand ===
+      // -------------------------
+      // シリーズ
+      // -------------------------
 
-    "すべて" ||
+      const seriesMatch =
+        filterSeries === "すべて" ||
+        coordCards.some(
+          (card) =>
+            String(card.series) ===
+            String(filterSeries)
+        ) ||
+        String(coord.series) ===
+          String(filterSeries);
 
-  cards.some(
+      // -------------------------
+      // ブランド
+      // -------------------------
 
-    (card) => {
+      const brandMatch =
+        filterBrand === "すべて" ||
+        coordCards.some((card) => {
+          const cardBrand =
+            card.brand?.trim() ||
+            "なし";
 
-      if (
+          return (
+            cardBrand ===
+            filterBrand
+          );
+        });
 
-        card.coordId !==
+      // -------------------------
+      // レアリティ
+      // -------------------------
 
-        coord.id
-
-      ) {
-
-        return false;
-
-      }
-
-      const cardBrand =
-
-        card.brand
-
-          ?.trim() ||
-
-        "なし";
+      const rarityMatch =
+        filterRarity === "すべて" ||
+        coordCards.some(
+          (card) =>
+            card.rarity?.trim() ===
+            filterRarity
+        );
 
       return (
-
-        cardBrand ===
-
-        filterBrand
-
+        typeMatch &&
+        seriesMatch &&
+        brandMatch &&
+        rarityMatch
       );
-
-    }
-    
-
-  );
-  const rarityMatch =
-  filterRarity === "すべて" ||
-  cards.some((card) => {
-    if (card.coordId !== coord.id) {
-      return false;
-    }
-
-    return (
-      card.rarity?.trim() === filterRarity
-    );
-  });
-
-        return (
-          typeMatch &&
-          seriesMatch &&
-          brandMatch &&
-          rarityMatch
-        );
-      }
-    );
+    });
 
   // =========================
   // JSX
@@ -2005,7 +2050,7 @@ brandList.push("なし");
         : 0),
     0
   )}
-  枚 / {cards.length}枚
+  枚 / {cardMaster.length}枚
 </div>
 
               {/* =========================
@@ -2038,7 +2083,7 @@ brandList.push("なし");
                       すべて
                     </button>
 
-                    {COORD_TYPES.map(
+                    {coordTypeList.map(
                       (
                         typeItem
                       ) => (
