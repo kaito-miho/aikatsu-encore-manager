@@ -49,22 +49,16 @@ function App() {
   // コーデ
   // =========================
 
-  const [coordList, setCoordList] = useState(() => {
+    const [coordList, setCoordList] = useState(() => {
     const saved = localStorage.getItem(
       "aikatsu-coords"
     );
 
+    let savedCoords = [];
+
     if (saved) {
       try {
-        const parsed = JSON.parse(saved);
-
-        return parsed.map((coord) => ({
-          ...coord,
-          coordType:
-            coord.coordType || "キュート",
-          series:
-            coord.series || "",
-        }));
+        savedCoords = JSON.parse(saved);
       } catch (error) {
         console.error(
           "コーデデータの読み込みに失敗しました",
@@ -73,7 +67,19 @@ function App() {
       }
     }
 
-    return coords.map((coord) => ({
+    const existingIds = new Set(
+      savedCoords.map((coord) => coord.id)
+    );
+
+    const newOfficialCoords =
+      officialCoords.filter(
+        (coord) => !existingIds.has(coord.id)
+      );
+
+    return [
+      ...savedCoords,
+      ...newOfficialCoords,
+    ].map((coord) => ({
       ...coord,
       coordType:
         coord.coordType || "キュート",
