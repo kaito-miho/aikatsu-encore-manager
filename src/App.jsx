@@ -1939,14 +1939,10 @@ const rarityList = [
 
               <div className="card-count">
   入手カード：
-  {cards.reduce(
-    (total, card) =>
-      total +
-      (typeof card.quantity === "number"
-        ? card.quantity
-        : 0),
-    0
-  )}
+  {cards.filter(
+    (card) =>
+      getCardQuantity(card)>0
+  ).length}
   枚 / {cardMaster.length}枚
 </div>
 
