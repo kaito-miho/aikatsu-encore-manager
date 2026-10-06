@@ -1300,13 +1300,64 @@ main {
   }
 }
 
-/* 保有・譲るの枚数表示 */
+/* 「保有」「譲る」のラベル */
 .quantity-label {
+  min-width: 36px;
   font-weight: 600;
-  min-width: 32px;
+  text-align: right;
 }
 
-/* 譲る操作だけ色を変える */
+/* 譲る操作 */
+.give-away-control {
+  color: #d97706;
+}
+
+.give-away-control button {
+  color: #d97706;
+  border-color: #d97706;
+}
+
+.give-away-control button:hover:not(:disabled) {
+  background: #fff7ed;
+}
+
+.give-away-control button:disabled {
+  color: #d6d3d1;
+  border-color: #d6d3d1;
+}
+
+/* =========================
+   保有・譲るの枚数操作
+========================= */
+
+.quantity-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.quantity-label {
+  width: 36px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  color: #777;
+}
+
+.give-away-label {
+  color: #d97706;
+}
+
+.quantity-row .quantity-control {
+  margin: 0;
+  width: auto;
+  max-width: none;
+}
+
 .give-away-control {
   color: #d97706;
 }

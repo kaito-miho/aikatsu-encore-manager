@@ -995,87 +995,129 @@ const changeGiveAwayQuantity = (
   // カード表示
   // =========================
 
-  const renderRegisteredCard = (
-    card
-  ) => {
-    const quantity =
-      getCardQuantity(card);
+  const renderRegisteredCard = (card) => {
+  const quantity = getCardQuantity(card);
+  const giveAwayQuantity =
+    card.giveAwayQuantity || 0;
 
-    return (
-      <div
-        className={`coord-item ${
-          quantity > 0
-            ? "is-owned"
-            : "not-owned"
-        }`}
-        key={card.id}
-      >
-        <div className="coord-item-type">
-          {card.itemType ||
-            card.type}
-        </div>
-
-        <div className="coord-item-image">
-          {card.image ? (
-            <img
-              src={card.image}
-              alt={card.name}
-              onClick={() =>
-               setSelectedImage(card.image)
-              }
-            />
-          ) : (
-            <div className="no-image">
-              画像なし
-            </div>
-          )}
-        </div>
-
-        <div className="coord-item-info">
-          <p className="coord-item-name">
-            {card.name}
-          </p>
-
-          <p className="coord-item-number">
-            {card.cardNumber}
-          </p>
-        </div>
-
-        <div className="quantity-control">
-          <button
-            type="button"
-            onClick={() =>
-              changeCardQuantity(
-                card.id,
-                -1
-              )
-            }
-            disabled={
-              quantity <= 0
-            }
-          >
-            −
-          </button>
-
-          <span>
-            {quantity}枚
-          </span>
-
-          <button
-            type="button"
-            onClick={() =>
-              changeCardQuantity(
-                card.id,
-                1
-              )
-            }
-          >
-            ＋
-          </button>
-        </div>
+  return (
+    <div
+      className={`coord-item ${
+        quantity > 0
+          ? "is-owned"
+          : "not-owned"
+      }`}
+      key={card.id}
+    >
+      <div className="coord-item-type">
+        {card.itemType || card.type}
       </div>
-    );
-  };
+
+      <div className="coord-item-image">
+        {card.image ? (
+          <img
+            src={card.image}
+            alt={card.name}
+            onClick={() =>
+              setSelectedImage(card.image)
+            }
+          />
+        ) : (
+          <div className="no-image">
+            画像なし
+          </div>
+        )}
+      </div>
+
+      <div className="coord-item-info">
+        <p className="coord-item-name">
+          {card.name}
+        </p>
+
+        <p className="coord-item-number">
+          {card.cardNumber}
+        </p>
+      </div>
+
+      {/* 保有枚数 */}
+      <div className="quantity-control">
+        <span className="quantity-label">
+          保有
+        </span>
+
+        <button
+          type="button"
+          onClick={() =>
+            changeCardQuantity(
+              card.id,
+              -1
+            )
+          }
+          disabled={quantity <= 0}
+        >
+          −
+        </button>
+
+        <span>
+          {quantity}枚
+        </span>
+
+        <button
+          type="button"
+          onClick={() =>
+            changeCardQuantity(
+              card.id,
+              1
+            )
+          }
+        >
+          ＋
+        </button>
+      </div>
+
+      {/* 譲る枚数 */}
+      <div className="quantity-control give-away-control">
+        <span className="quantity-label">
+          譲る
+        </span>
+
+        <button
+          type="button"
+          onClick={() =>
+            changeGiveAwayQuantity(
+              card.id,
+              -1
+            )
+          }
+          disabled={
+            giveAwayQuantity <= 0
+          }
+        >
+          −
+        </button>
+
+        <span>
+          {giveAwayQuantity}枚
+        </span>
+
+        <button
+          type="button"
+          onClick={() =>
+            changeGiveAwayQuantity(
+              card.id,
+              1
+            )
+          }
+          disabled={
+            giveAwayQuantity >= quantity
+          }
+        >
+          ＋
+        </button>
+      </div>
+    </div>
+  );
+};
 
   // =========================
   // 未登録の旧コーデアイテム
@@ -1979,48 +2021,6 @@ const rarityList = [
     ＋
   </button>
 </div>
-
-                            {/* 譲る枚数 */}
-
-                            <div className="quantity-control">
-                              <span>譲る</span>
-
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  changeGiveAwayQuantity(
-                                    card.id,
-                                    -1
-                                  )
-                                }
-                                disabled={
-                                  !card.giveAwayQuantity ||
-                                  card.giveAwayQuantity <= 0
-                                }
-                              >
-                                −
-                              </button>
-
-                              <span>
-                                {card.giveAwayQuantity || 0}枚
-                              </span>
-
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  changeGiveAwayQuantity(
-                                    card.id,
-                                    1
-                                  )
-                                }
-                                disabled={
-                                  (card.giveAwayQuantity || 0) >=
-                                  quantity
-                                }
-                              >
-                                ＋
-                              </button>
-                            </div>
 
                             <button
                               className="edit-button"
