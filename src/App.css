@@ -1375,3 +1375,85 @@ main {
   color: #d6d3d1;
   border-color: #d6d3d1;
 }
+
+/* =========================
+   スマホ対応
+========================= */
+
+@media (max-width: 600px) {
+  .quantity-row {
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .quantity-label {
+    width: 32px;
+    font-size: 12px;
+  }
+
+  .quantity-row .quantity-control {
+    gap: 4px;
+  }
+
+  .quantity-row .quantity-control button {
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+  }
+
+  .quantity-row .quantity-control span {
+    min-width: 42px;
+    height: 28px;
+    padding: 0 4px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .coord-items-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .coord-item {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .coord-item-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .coord-item-info {
+    min-width: 0;
+  }
+
+  .coord-item-name {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .registered-card-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .registered-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .registered-card-info {
+    min-width: 0;
+  }
+
+  .registered-card-info h3,
+  .registered-card-info p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
