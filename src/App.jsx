@@ -1104,7 +1104,7 @@ function App() {
   ) => {
     const coordCards =
       getCardsForCoord(
-        coord.id
+        coord
       );
 
     // 登録済みカードがある場合
