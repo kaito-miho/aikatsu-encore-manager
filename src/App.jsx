@@ -912,15 +912,15 @@ function App() {
   // =========================
 
   const getCoordOwnedCount = (coord) => {
-    const coordCards =
-      getCardsForCoord(coord);
+  const coordCards =
+    getCardsForCoord(coord);
 
-    return coordCards.reduce(
-      (total,card) =>
-        total + getCardQuantity(card),
-      0
-    );
-  };
+  // 1枚以上持っているカードの「種類数」を数える
+  return coordCards.filter(
+    (card) =>
+      getCardQuantity(card) > 0
+  ).length;
+};
 
   // =========================
   // コーデの必要カード数
