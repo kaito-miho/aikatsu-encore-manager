@@ -45,62 +45,14 @@ function App() {
   const [selectedImage, setSelectedImage] =
     useState(null);
 
-    // =========================
+  // =========================
   // コーデ
+  // Excelから生成された公式コーデを正とする
+  // localStorageの古いコーデ情報は使用しない
   // =========================
 
   const [coordList, setCoordList] = useState(() => {
-    const saved = localStorage.getItem(
-      "aikatsu-coords"
-    );
-
-    let savedCoords = [];
-
-    if (saved) {
-      try {
-        savedCoords = JSON.parse(saved);
-      } catch (error) {
-        console.error(
-          "コーデデータの読み込みに失敗しました",
-          error
-        );
-      }
-    }
-
-    // =========================
-    // 公式コーデだけを残す
-    // 手動登録したコーデは今回のマスタ統合では無視
-    // =========================
-
-    const officialIds = new Set(
-      officialCoords.map(
-        (coord) => coord.id
-      )
-    );
-
-    const savedOfficialCoords =
-      savedCoords.filter((coord) =>
-        officialIds.has(coord.id)
-      );
-
-    const savedOfficialIds = new Set(
-      savedOfficialCoords.map(
-        (coord) => coord.id
-      )
-    );
-
-    // Excelから生成された公式コーデのうち、
-    // localStorageにまだ存在しないものを追加
-    const newOfficialCoords =
-      officialCoords.filter(
-        (coord) =>
-          !savedOfficialIds.has(coord.id)
-      );
-
-    return [
-      ...savedOfficialCoords,
-      ...newOfficialCoords,
-    ].map((coord) => ({
+    return officialCoords.map((coord) => ({
       ...coord,
       coordType:
         coord.coordType || "キュート",
@@ -905,16 +857,16 @@ function App() {
       setEditingCoordSeries("");
     };
 
-  // =========================
+    // =========================
   // コーデのカード取得
+  // ExcelマスタのcoordNameを正として紐付け
   // =========================
 
-  const getCardsForCoord = (
-    coordId
-  ) => {
+  const getCardsForCoord = (coord) => {
     return cards.filter(
       (card) =>
-        card.coordId === coordId
+        String(card.coordName || "").trim() ===
+        String(coord.name || "").trim()
     );
   };
 
@@ -922,38 +874,20 @@ function App() {
   // コーデに含まれる種類
   // =========================
 
-  const getCoordItemTypes = (
-    coord
-  ) => {
+  const getCoordItemTypes = (coord) => {
     const coordCards =
-      getCardsForCoord(
-        coord.id
-      );
+      getCardsForCoord(coord);
 
-    const registeredTypes =
-      coordCards
-        .map(
-          (card) =>
-            card.itemType ||
-            card.type ||
-            "トップス"
-        );
-
-    const staticTypes =
-      (coord.items || [])
-        .map(
-          (item) =>
-            item.type
-        );
-
-    const allTypes = [
-      ...registeredTypes,
-      ...staticTypes,
-    ];
-
-    // 登録順を保ちながら重複削除
     return [
-      ...new Set(allTypes),
+      ...new Set(
+        coordCards
+          .map(
+            (card) =>
+              card.itemType ||
+              card.type
+          )
+          .filter(Boolean)
+      ),
     ];
   };
 
@@ -965,72 +899,36 @@ function App() {
     coord,
     itemType
   ) => {
-    return cards.filter(
+    return getCardsForCoord(coord).filter(
       (card) =>
-        card.coordId ===
-          coord.id &&
         (card.itemType ||
-          card.type) ===
-          itemType
+          card.type) === itemType
     );
   };
+
 
   // =========================
   // コーデの総保有数
   // =========================
 
-  const getCoordOwnedCount = (
-    coord
-  ) => {
+  const getCoordOwnedCount = (coord) => {
     const coordCards =
-      getCardsForCoord(
-        coord.id
-      );
+      getCardsForCoord(coord);
 
-    // 登録済みカードがある場合
-    if (coordCards.length > 0) {
-      return coordCards.reduce(
-        (total, card) =>
-          total +
-          getCardQuantity(card),
-        0
-      );
-    }
-
-    // 旧形式のコーデ
-    const itemTypes =
-      getCoordItemTypes(
-        coord
-      );
-
-    return itemTypes.filter(
-      (itemType) => {
-        const key = `${coord.id}-${itemType}`;
-
-        return !!ownedCards[key];
-      }
-    ).length;
+    return coordCards.reduce(
+      (total, card) =>
+        total +
+        getCardQuantity(card),
+      0
+    );
   };
 
   // =========================
   // コーデの必要カード数
   // =========================
 
-  const getCoordRequiredCount = (
-    coord
-  ) => {
-    const coordCards =
-      getCardsForCoord(
-        coord.id
-      );
-
-    if (coordCards.length > 0) {
-      return coordCards.length;
-    }
-
-    return getCoordItemTypes(
-      coord
-    ).length;
+  const getCoordRequiredCount = (coord) => {
+    return getCardsForCoord(coord).length;
   };
 
   // =========================
